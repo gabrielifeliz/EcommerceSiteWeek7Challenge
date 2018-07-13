@@ -1,0 +1,11 @@
+.input {
+    background: rgba(184, 255, 247, 0.65);
+}
+
+.item-image {
+    width: 100%;
+    /* Images default to being inline, inline items cannot have a width, so change to block: */
+    display: block;
+    /* The following may be needed if there's still a wierd looking 2-3px gap at the bottom of the image in some browsers: */
+    vertical-align: bottom;
+}

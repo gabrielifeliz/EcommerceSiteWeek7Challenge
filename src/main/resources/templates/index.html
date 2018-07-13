@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
+<head>
+    <th:block th:replace="base :: headstuff"></th:block>
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="base :: navbar"></div>
+<div class="main">
+    <br/>
+    <div class="container" th:each="item : ${items}">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><span th:text="${item.name}"></span></li>
+                <li class="list-group-item"><span th:text="${item.description}"></span></li>
+                <li class="list-group-item image-wrapper" th:if="${item.image}">
+                    <img class="item-image" th:src="${item.image}"/>
+                </li>
+            </ul>
+
+            <br/><br/>
+            <a th:href="@{/items/update/{id}(id=${item.id})}" role="button">
+                <button class="btn btn-info btn-lg">Update</button></a><br /><br />
+
+            <a th:href="@{/items/delete/{id}(id=${item.id})}" role="button">
+                <button class="btn btn-info btn-lg">Delete</button></a><br /><br />
+        </div>
+    </div>
+</div>
+<th:block th:replace="base :: jslinks"></th:block>
+</body>
+</html>

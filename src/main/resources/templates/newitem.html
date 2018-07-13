@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <th:block th:replace="base :: headstuff"></th:block>
+    <title>Registration Form</title>
+</head>
+<body>
+<div th:replace="base :: navbar"></div>
+<div class="main">
+    <br/>
+    <div class="container input">
+        <h1>Sell an item</h1>
+        <form th:action="@{/items/saveitem}" th:object="${item}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="hidden" class="form-control" th:field="*{id}"/>
+                <label for="itemName">Enter Item's Name:</label>
+                <input type="text" class="form-control" th:field="*{itemName}"/><br/>
+                <span th:if="${#fields.hasErrors('itemName')}"
+                      th:errors="*{itemName}"></span>
+            </div>
+            <div class="form-group">
+                <label for="description">Item Tags:</label>
+                <input type="text" class="form-control" th:field="*{description}"
+                       placeholder="Separate tags by commas or spaces..."/><br/>
+                <span th:if="${#fields.hasErrors('description')}"
+                      th:errors="*{description}"></span>
+            </div>
+            <div class="form-group">
+                <label for="image">Picture (optional):</label>
+                <input type="file" name="file" class="form-control"><br/>
+                <span th:if="${#fields.hasErrors('image')}"
+                      th:errors="*{image}"></span>
+            </div>
+            <div class="form-group">
+                <label for="itemTags">Price:</label>
+                <input type="text" value="" placeholder="Price must be greater than zero"
+                       class="form-control" th:field="*{price}"/><br/>
+                <span th:if="${#fields.hasErrors('price')}"
+                      th:errors="*{price}"></span>
+            </div>
+
+            <button type="submit" class="btn btn-info btn-lg">
+                Add item</button>
+            <br/><br/>
+        </form>
+        <br /><br />
+    </div>
+</div>
+<th:block th:replace="base :: jslinks"></th:block>
+</body>
+</html>
