@@ -12,8 +12,9 @@
     <div class="container" th:each="item : ${items}">
         <div class="jumbotron">
             <ul class="list-group">
-                <li class="list-group-item"><span th:text="${item.name}"></span></li>
+                <li class="list-group-item"><span th:text="${item.itemName}"></span></li>
                 <li class="list-group-item"><span th:text="${item.description}"></span></li>
+                <li class="list-group-item"><span th:text="${item.itemTags}"></span></li>
                 <li class="list-group-item image-wrapper" th:if="${item.image}">
                     <img class="item-image" th:src="${item.image}"/>
                 </li>
