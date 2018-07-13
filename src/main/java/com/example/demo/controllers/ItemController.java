@@ -68,7 +68,7 @@ public class ItemController {
             items.save(item);
         } catch (IOException e) {
             e.printStackTrace();
-            return "redirect:/additem";
+            return "redirect:/items/additem";
         }
 
         return "redirect:/items/";

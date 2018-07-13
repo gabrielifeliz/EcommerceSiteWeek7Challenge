@@ -19,11 +19,18 @@
                       th:errors="*{itemName}"></span>
             </div>
             <div class="form-group">
-                <label for="description">Item Tags:</label>
+                <label for="description">Description:</label>
                 <input type="text" class="form-control" th:field="*{description}"
                        placeholder="Separate tags by commas or spaces..."/><br/>
                 <span th:if="${#fields.hasErrors('description')}"
                       th:errors="*{description}"></span>
+            </div>
+            <div class="form-group">
+                <label for="itemTags">Item Tags:</label>
+                <input type="text" class="form-control" th:field="*{itemTags}"
+                       placeholder="Separate tags by commas or spaces..."/><br/>
+                <span th:if="${#fields.hasErrors('itemTags')}"
+                      th:errors="*{itemTags}"></span>
             </div>
             <div class="form-group">
                 <label for="image">Picture (optional):</label>
