@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <th:block th:replace="base :: headstuff"></th:block>
+    <title>List of Users</title>
+</head>
+<body>
+<div th:replace="base :: navbar"></div>
+<div class="main">
+    <br/>
+    <div class="container input">
+        <br/>
+        <div class="jumbotron">
+            <table class="table">
+                <caption>List of users</caption>
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td>
+                        <a th:href="@{/delete/{id}(id=${user.id})}" role="button">
+                            <button class="btn btn-info btn-lg">Delete</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<th:block th:replace="base :: jslinks"></th:block>
+</body>
+</html>

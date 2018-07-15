@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
@@ -58,6 +55,19 @@ public class HomeController {
             model.addAttribute("message", "User Account Successfully Created");
         }
         return "redirect:/items/myitems";
+    }
+
+    @RequestMapping("/userlist")
+    public String userList(Model model)
+    {
+        model.addAttribute("users", users.findAll());
+        return "userlist";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public  String deletePost(@PathVariable("id") long id){
+        users.deleteById(id);
+        return "redirect:/items/";
     }
 
     @PostConstruct

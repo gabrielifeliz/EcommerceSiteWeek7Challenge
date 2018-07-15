@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
 <head>
     <th:block th:fragment="headstuff">
         <meta charset="utf-8" />
@@ -53,6 +54,7 @@
                                 <p>Messages</p>
                             </a>
                         </li>-->
+
                         <li>
                             <a href="/items/myitems">
                                 <i class="fa fa-shopping-bag w3-xxxlarge"></i>
@@ -69,6 +71,12 @@
                             <a href="/items/additem">
                                 <i class="fa fa-dollar w3-xxxlarge"></i>
                                 <p>Sell an Item</p>
+                            </a>
+                        </li>
+                        <li sec:authorize="hasAuthority('ADMIN')">
+                            <a href="/userlist">
+                                <i class="fa fa-users w3-xxxlarge"></i>
+                                <p>Manage Users</p>
                             </a>
                         </li>
                         <li class="dropdown">

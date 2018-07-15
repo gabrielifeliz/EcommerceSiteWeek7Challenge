@@ -4,6 +4,7 @@ import com.cloudinary.utils.ObjectUtils;
 import com.example.demo.configurations.CloudinaryConfig;
 import com.example.demo.models.Item;
 import com.example.demo.repositories.AppRoleRepository;
+import com.example.demo.repositories.AppUserRepository;
 import com.example.demo.repositories.ItemRepository;
 import com.example.demo.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
