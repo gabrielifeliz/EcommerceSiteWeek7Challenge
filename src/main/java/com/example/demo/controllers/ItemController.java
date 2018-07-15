@@ -3,8 +3,11 @@ package com.example.demo.controllers;
 import com.cloudinary.utils.ObjectUtils;
 import com.example.demo.configurations.CloudinaryConfig;
 import com.example.demo.models.Item;
+import com.example.demo.repositories.AppRoleRepository;
 import com.example.demo.repositories.ItemRepository;
+import com.example.demo.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +32,9 @@ public class ItemController {
     ItemRepository items;
 
     @Autowired
+    ItemService myItems;
+
+    @Autowired
     CloudinaryConfig cloudc;
 
     @RequestMapping("/")
@@ -39,24 +45,23 @@ public class ItemController {
     }
 
     @GetMapping("/additem")
-    public String addPersonColorInfo(Model model)
+    public String addItem(Model model)
     {
         model.addAttribute("item", new Item());
         return "newitem";
     }
 
     @PostMapping("/saveitem")
-    public String savePersonColorInfo(@Valid @ModelAttribute("item") Item item,
-                                      BindingResult result,
+    public String saveItem(@Valid @ModelAttribute("item") Item item,
+                                      BindingResult result, Authentication getDetails,
                                       @RequestParam("file")MultipartFile file) {
         if (result.hasErrors()) {
             return "newitem";
         }
 
-
         if (file.isEmpty()) {
             item.setPublicationDate();
-            items.save(item);
+            myItems.save(item, getDetails);
             return "redirect:/items/";
         }
 
@@ -65,15 +70,21 @@ public class ItemController {
                     ObjectUtils.asMap("resourcetype", "auto"));
             item.setImage(uploadResult.get("url").toString());
             item.setPublicationDate();
-            items.save(item);
+            myItems.save(item, getDetails);
         } catch (IOException e) {
             e.printStackTrace();
             return "redirect:/items/additem";
         }
 
-        return "redirect:/items/";
+        return "redirect:/items/myitems";
     }
 
+    @RequestMapping("/myitems")
+    public String displayHome(Model model, Authentication authentication) {
+
+        model.addAttribute("items", myItems.orderMyItems(authentication));
+        return "myitems";
+    }
 
     @RequestMapping("/update/{id}")
     public String updatePost(@PathVariable("id") long id, Model model){
@@ -84,7 +95,7 @@ public class ItemController {
     @RequestMapping("/delete/{id}")
     public  String deletePost(@PathVariable("id") long id){
         items.deleteById(id);
-        return "redirect:/";
+        return "redirect:/items/";
     }
 
     /*@PostConstruct

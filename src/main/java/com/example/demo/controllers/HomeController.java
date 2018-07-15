@@ -57,7 +57,7 @@ public class HomeController {
             userService.saveUser(user);
             model.addAttribute("message", "User Account Successfully Created");
         }
-        return "login";
+        return "redirect:/items/myitems";
     }
 
     @PostConstruct
