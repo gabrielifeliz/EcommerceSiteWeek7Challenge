@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ItemRepository extends CrudRepository<Item, Long> {
     Iterable<Item> findAllByMyItem(AppUser appUser);
+    Iterable<Item> findAllByListedOrderByPublicationDateDesc(boolean isDislisted);
     Iterable<Item> findAllByMyItemOrderByPublicationDateDesc(AppUser appUser);
     Iterable<Item> findAllByItemTagsContainingIgnoreCase(String s);
     Iterable<Item> findAllByItemNameContainingIgnoreCase(String s);

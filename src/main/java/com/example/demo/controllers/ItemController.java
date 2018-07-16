@@ -41,7 +41,7 @@ public class ItemController {
     @RequestMapping("/")
     public String allitems(Model model)
     {
-        model.addAttribute("items",items.findAllByOrderByPublicationDateDesc());
+        model.addAttribute("items",items.findAllByListedOrderByPublicationDateDesc(true));
         return "allitems";
     }
 
@@ -114,6 +114,23 @@ public class ItemController {
         items.save(item);
         return "redirect:/items/";
     }
+
+    @RequestMapping("/listed/{id}")
+    public String listedItem(@PathVariable("id") long id){
+        Item item =  items.findById(id).get();
+        item.setListed(true);
+        items.save(item);
+        return "redirect:/items/";
+    }
+
+    @RequestMapping("/delisted/{id}")
+    public String delistedItem(@PathVariable("id") long id){
+        Item item =  items.findById(id).get();
+        item.setListed(false);
+        items.save(item);
+        return "redirect:/items/";
+    }
+
 
     @RequestMapping("/buyitem/{id}")
     public String buyItem(@PathVariable("id") long id){

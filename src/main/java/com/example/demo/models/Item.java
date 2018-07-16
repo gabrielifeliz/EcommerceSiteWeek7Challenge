@@ -40,6 +40,8 @@ public class Item {
 
     private int itemsSold = 0;
 
+    private boolean listed = true;
+
     public long getId() {
         return id;
     }
@@ -127,5 +129,13 @@ public class Item {
 
     public void setTotalEarnedItem(double totalEarnedItem) {
         this.totalEarnedItem = totalEarnedItem;
+    }
+
+    public boolean isListed() {
+        return listed;
+    }
+
+    public void setListed(boolean listed) {
+        this.listed = listed;
     }
 }

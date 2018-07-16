@@ -37,8 +37,11 @@
             <a th:href="@{/items/sold/{id}(id=${item.id})}" role="button">
                 <button class="btn btn-info btn-lg">Label as Sold</button></a><br/>
 
-            <a th:href="@{/items/update/{id}(id=${item.id})}" role="button">
-                <button class="btn btn-info btn-lg">Update</button></a><br/>
+            <a th:href="@{/items/delisted/{id}(id=${item.id})}" role="button">
+                <button class="btn btn-info btn-lg">Delist from Public View</button></a><br/>
+
+            <a th:href="@{/items/listed/{id}(id=${item.id})}" role="button">
+                <button class="btn btn-info btn-lg">Add Back to Public View</button></a><br/>
 
             <a th:href="@{/items/delete/{id}(id=${item.id})}" role="button">
                 <button class="btn btn-info btn-lg">Delete</button></a><br />
