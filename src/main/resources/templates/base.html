@@ -42,13 +42,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <!--<li>
+                        <li>
                             <a href="javascript:void(0);" data-toggle="search" class="hidden-xs">
                             <i class="fa fa-search w3-xxxlarge"></i>
                                 <p>Search</p>
                             </a>
                         </li>
-                        <li>
+                        <!--<li>
                             <a href="#">
                                 <i class="fa fa-envelope-o w3-xxxlarge"></i>
                                 <p>Messages</p>
@@ -93,9 +93,9 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-right navbar-search-form" role="search">
+                    <form class="navbar-form navbar-right navbar-search-form" role="search" th:action="@{/items/search}">
                         <div class="form-group">
-                            <input type="text" value="" class="form-control" placeholder="Search...">
+                            <input type="text" value="" name="search" class="form-control" placeholder="Search item...">
                         </div>
                     </form>
 

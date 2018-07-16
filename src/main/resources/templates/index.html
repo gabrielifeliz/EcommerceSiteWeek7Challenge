@@ -9,6 +9,9 @@
 <div th:replace="base :: navbar"></div>
 <div class="main">
     <br/>
+    <div class="container jumbotron" th:if="${search}!=null"
+         th:inline="text">You searched for [[${search}]]:</div>
+    <br/>
     <div class="container" th:each="item : ${items}">
         <div class="jumbotron">
             <ul class="list-group">
