@@ -26,7 +26,7 @@ public class Item {
     private String itemTags;
 
     @NotNull
-    @Min(1)
+    @Min(0)
     private double price;
 
     private double totalEarnedItem;

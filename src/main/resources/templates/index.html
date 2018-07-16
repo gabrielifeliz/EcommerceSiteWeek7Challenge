@@ -12,27 +12,110 @@
     <div class="container jumbotron" th:if="${search}!=null"
          th:inline="text">You searched for [[${search}]]:</div>
     <br/>
-    <!--<div class="container" th:each="item : ${items}">
-        <div class="jumbotron">
-            <ul class="list-group">
-                <li class="list-group-item"><span th:text="${item.itemName}"></span></li>
-                <li class="list-group-item"><span th:text="${item.description}"></span></li>
-                <li class="list-group-item"><span th:text="${item.itemTags}"></span></li>
-                <li class="list-group-item image-wrapper" th:if="${item.image}">
-                    <img class="item-image" th:src="${item.image}"/>
-                </li>
-                <li class="list-group-item"><span th:text="'$'
-                    + ${#numbers.formatDecimal(item.price, 0, 'COMMA', 2, 'POINT')}"></span></li>
-                <li class="list-group-item"><span th:text ="${item.available} ? 'Available' : 'Sold'"></span></li>
-            </ul>
-
-            <a th:if="${item.available}" th:href="@{/items/buyitem/{id}(id=${item.id})}" role="button">
-                <button class="btn btn-info btn-lg">Buy Item</button></a><br/>
-        </div>
-    </div>-->
     <div class="container">
         <a th:href="@{/items/}" role="button">
             <button class="btn btn-info btn-lg" >See More</button></a><br/>
+    </div>
+    <br/>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Frigde</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/fridge.jpg"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Lace</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/lace.jpg"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Glass</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/glass.jpg"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Clock</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/clock.jpg"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Controller</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/controller.jpg"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Piano</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/piano.jpg"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Table</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/table.jpg"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Conditioner</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/conditioner.jpg"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Cookie Jar</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/cookie_jar.jpg"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Lamp</h3></li>
+                <li class="list-group-item image-wrapper" >
+                    <img class="item-image" src="https://www.randomlists.com/img/things/lamp.jpg"/>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 <th:block th:replace="base :: jslinks"></th:block>

@@ -55,8 +55,13 @@ public class ItemController {
     @PostMapping("/saveitem")
     public String saveItem(@Valid @ModelAttribute("item") Item item,
                                       BindingResult result, Authentication getDetails,
-                                      @RequestParam("file")MultipartFile file) {
+                                      @RequestParam("file")MultipartFile file, Model model) {
         if (result.hasErrors()) {
+            return "newitem";
+        }
+
+        if (item.getPrice() < 0.01) {
+            model.addAttribute("pricevalidation", "Please enter a number greater than zero");
             return "newitem";
         }
 
