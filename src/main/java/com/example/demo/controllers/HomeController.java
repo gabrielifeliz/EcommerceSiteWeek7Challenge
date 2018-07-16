@@ -65,7 +65,7 @@ public class HomeController {
     }
 
     @RequestMapping("/delete/{id}")
-    public  String deletePost(@PathVariable("id") long id){
+    public  String deleteUser(@PathVariable("id") long id){
         users.deleteById(id);
         return "redirect:/items/";
     }

@@ -8,4 +8,5 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
     Iterable<Item> findAllByMyItem(AppUser appUser);
     Iterable<Item> findAllByMyItemOrderByPublicationDateDesc(AppUser appUser);
     Iterable<Item> findAllByItemTagsContainingIgnoreCase(String s);
+    Iterable<Item> findAllByOrderByPublicationDateDesc();
 }

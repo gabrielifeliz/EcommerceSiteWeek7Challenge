@@ -14,16 +14,10 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotEmpty
-    @Size(min = 1, max = 255)
     private String firstName;
 
-    @NotEmpty
-    @Size(min = 1, max = 255)
     private String lastName;
 
-    @NotEmpty
-    @Size(min = 1, max = 255)
     private String email;
 
     @NotEmpty

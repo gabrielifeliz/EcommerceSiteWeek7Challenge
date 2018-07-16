@@ -28,7 +28,7 @@
                     <td th:text="${user.lastName}"></td>
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.username}"></td>
-                    <td>
+                    <td th:if="${user.username} != 'admin'">
                         <a th:href="@{/delete/{id}(id=${user.id})}" role="button">
                             <button class="btn btn-info btn-lg">Delete</button></a>
                     </td>

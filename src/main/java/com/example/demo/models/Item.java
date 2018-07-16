@@ -34,6 +34,10 @@ public class Item {
     @ManyToOne
     private AppUser myItem;
 
+    private boolean available = true;
+
+    private int itemsSold = 0;
+
     public long getId() {
         return id;
     }
@@ -99,5 +103,19 @@ public class Item {
         this.myItem = myItem;
     }
 
+    public boolean isAvailable() {
+        return available;
+    }
 
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public int getItemsSold() {
+        return itemsSold;
+    }
+
+    public void setItemsSold(int itemsSold) {
+        this.itemsSold = itemsSold;
+    }
 }

@@ -41,7 +41,7 @@ public class ItemController {
     @RequestMapping("/")
     public String index(Model model)
     {
-        model.addAttribute("items",items.findAll());
+        model.addAttribute("items",items.findAllByOrderByPublicationDateDesc());
         return "index";
     }
 
@@ -97,6 +97,30 @@ public class ItemController {
     public  String deletePost(@PathVariable("id") long id){
         items.deleteById(id);
         return "redirect:/items/";
+    }
+
+    @RequestMapping("/available/{id}")
+    public String availableItem(@PathVariable("id") long id){
+        Item item =  items.findById(id).get();
+        item.setAvailable(true);
+        items.save(item);
+        return "redirect:/items/";
+    }
+
+    @RequestMapping("/sold/{id}")
+    public String soldItem(@PathVariable("id") long id){
+        Item item =  items.findById(id).get();
+        item.setAvailable(false);
+        items.save(item);
+        return "redirect:/items/";
+    }
+
+    @RequestMapping("/buyitem/{id}")
+    public String buyItem(@PathVariable("id") long id){
+        Item item =  items.findById(id).get();
+        item.setItemsSold(item.getItemsSold() + 1);
+        items.save(item);
+        return "redirect:/";
     }
 
     /*@PostConstruct
