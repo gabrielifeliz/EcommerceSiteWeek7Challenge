@@ -12,7 +12,9 @@
     <div class="container jumbotron" th:if="${search}!=null"
          th:inline="text">You searched for [[${search}]]:</div>
     <br/>
-    <!--<div class="container" th:each="item : ${items}">
+    <div th:replace="base :: searchstuff"></div>
+    <br/>
+    <div class="container" th:each="item : ${items}">
         <div class="jumbotron">
             <ul class="list-group">
                 <li class="list-group-item"><span th:text="${item.itemName}"></span></li>
@@ -29,10 +31,6 @@
             <a th:if="${item.available}" th:href="@{/items/buyitem/{id}(id=${item.id})}" role="button">
                 <button class="btn btn-info btn-lg">Buy Item</button></a><br/>
         </div>
-    </div>-->
-    <div class="container">
-        <a th:href="@{/items/}" role="button">
-            <button class="btn btn-info btn-lg" >See More</button></a><br/>
     </div>
 </div>
 <th:block th:replace="base :: jslinks"></th:block>

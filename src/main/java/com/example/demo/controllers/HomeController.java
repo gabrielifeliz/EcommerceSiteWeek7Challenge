@@ -28,14 +28,18 @@ public class HomeController {
 
     @RequestMapping("/")
     public String homePage() {
-        return "redirect:/items/";
+        return "index";
     }
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String login() {
         return "login";
     }
 
+    @PostMapping("/login")
+    public String loggedIn() {
+        return "redirect:/items/myitems";
+    }
 
     @GetMapping("/register")
     public String showRegistrationPage(Model model) {

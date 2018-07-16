@@ -39,10 +39,10 @@ public class ItemController {
     CloudinaryConfig cloudc;
 
     @RequestMapping("/")
-    public String index(Model model)
+    public String allitems(Model model)
     {
         model.addAttribute("items",items.findAllByOrderByPublicationDateDesc());
-        return "index";
+        return "allitems";
     }
 
     @GetMapping("/additem")
@@ -118,7 +118,9 @@ public class ItemController {
     @RequestMapping("/buyitem/{id}")
     public String buyItem(@PathVariable("id") long id){
         Item item =  items.findById(id).get();
+        final double TAX = 1.06;
         item.setItemsSold(item.getItemsSold() + 1);
+        item.setTotalEarnedItem(item.getItemsSold() * item.getPrice() * TAX);
         items.save(item);
         return "redirect:/";
     }
@@ -138,15 +140,26 @@ public class ItemController {
         }
     }*/
 
-    @RequestMapping("/search")
-    public String showSearchResults(HttpServletRequest request, Model model)
+    @RequestMapping("items/search/itemname")
+    public String searchByItemName(HttpServletRequest request, Model model)
+    {
+        //Get the search string from the result form
+        String searchString = request.getParameter("search");
+        model.addAttribute("search", searchString);
+        model.addAttribute("items",
+                items.findAllByItemNameContainingIgnoreCase(searchString));
+        return "allitems";
+    }
+
+    @RequestMapping("items/search/itemtag")
+    public String searchByItemTags(HttpServletRequest request, Model model)
     {
         //Get the search string from the result form
         String searchString = request.getParameter("search");
         model.addAttribute("search", searchString);
         model.addAttribute("items",
                 items.findAllByItemTagsContainingIgnoreCase(searchString));
-        return "index";
+        return "allitems";
     }
 
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <th:block th:replace="base :: headstuff"></th:block>
-    <title>Registration Form</title>
+    <title>Sell Items</title>
 </head>
 <body>
 <div th:replace="base :: navbar"></div>
@@ -10,6 +10,7 @@
     <br/>
     <div class="container input">
         <h1>Sell an item</h1>
+        <br/>
         <form th:action="@{/items/saveitem}" th:object="${item}" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <input type="hidden" class="form-control" th:field="*{id}"/>

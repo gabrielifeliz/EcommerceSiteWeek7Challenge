@@ -29,6 +29,8 @@ public class Item {
     @Min(1)
     private double price;
 
+    private double totalEarnedItem;
+
     private String publicationDate;
 
     @ManyToOne
@@ -117,5 +119,13 @@ public class Item {
 
     public void setItemsSold(int itemsSold) {
         this.itemsSold = itemsSold;
+    }
+
+    public double getTotalEarnedItem() {
+        return totalEarnedItem;
+    }
+
+    public void setTotalEarnedItem(double totalEarnedItem) {
+        this.totalEarnedItem = totalEarnedItem;
     }
 }
